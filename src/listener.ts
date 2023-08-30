@@ -19,7 +19,6 @@ type SaleDocument = {
   sponsor: number;
   sponsor_comm: number;
 };
-``;
 
 interface TransferDetails {
   from_address: string;
