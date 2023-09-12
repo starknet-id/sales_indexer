@@ -1,4 +1,5 @@
 import { decodeTransfersInBlock } from "./listener.ts";
+import { MONGO_CONNECTION_STRING } from "./utils/constants.ts";
 import { Block } from "./deps.ts";
 import filter from "./filter.ts";
 
@@ -9,8 +10,10 @@ export const config = {
   filter,
   sinkType: "mongo",
   sinkOptions: {
+    connectionString: MONGO_CONNECTION_STRING,
     database: "sales",
     collectionName: "sales",
+    entityMode: false,
   },
 };
 
