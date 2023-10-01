@@ -20,16 +20,19 @@ services:
       - etcd_data:/bitnami/etcd
 
   indexer:
-    image: quay.io/apibara/sink-mongo:0.3
+    image: quay.io/apibara/sink-mongo:0.4
     depends_on:
       - etcd
     restart: always
+    ports:
+      - "8000:8000"
     command:
       - run
       - --allow-env=/data/env
       - /data/src/main.ts
+      - --status-server-address=0.0.0.0:8001
     volumes:
-      - ${PWD}/:/data/
+      - ./:/data/
     environment:
       PERSIST_TO_ETCD: http://etcd:2379
       SINK_ID: sales-indexer
