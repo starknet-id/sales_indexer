@@ -20,12 +20,12 @@ services:
       - etcd_data:/bitnami/etcd
 
   indexer:
-    image: quay.io/apibara/sink-mongo:0.4
+    image: quay.io/apibara/sink-mongo:0.4.1
     depends_on:
       - etcd
     restart: always
     ports:
-      - "8000:8000"
+      - "8001:8001"
     command:
       - run
       - --allow-env=/data/env
